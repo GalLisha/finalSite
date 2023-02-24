@@ -1,0 +1,42 @@
+<%- include("headerPoker") -%>
+<div class="img-section">
+  <img src="/images/poker.png" width="350" height="350">
+</div>
+
+
+<div class="box">
+  <% for (let i=0; i<newListItems.length; i++) { %>
+    <div class="item">
+      <p><%=  newListItems[i].name  %></p>
+      <p><%=  newListItems[i].rebuys  %></p>
+      <p><%=  newListItems[i].rebuys * 20 %></p>
+      <form class="rebuys" action="/pokerList" method="post">
+        <button type="submit" name="addRebuy" value="<%=newListItems[i].name%>">+</button>
+        <button class = "minus" type="submit" name="removeRebuy" value="<%=newListItems[i].name%>">-</button>
+      </form>
+    </div>
+    <% } %>
+    <div class="item">
+      <p>Total Money: <%= totalMoney%></p>
+      <p>Total Chips: <%= totalChips%></p>
+    </div>
+    <form class="item" action="/pokerList" method="post">
+      <input type="text" name="newPlayer" placeholder="Add Player" autocomplete="off">
+      <button type="submit" name="list">+</button>
+      <button class="ref-btn" type="submit" name="refresh"> <i class="fa fa-refresh"></i></button>
+    </form>
+</div>
+
+<!-- <div class="box" id="heading"> -->
+<div class="box title-sec" id="heading">
+  <h1> <%= listTitle %> </h1>
+</div>
+
+<div class="for-home">
+  <form class="" action="/pokerListHome" method="post">
+    <button id = "btnbtn" class = "btn btn-secondary" type="submit" name="home">To Home</button>
+  </form>
+</div>
+<br><br>
+
+<%- include("footer") -%>

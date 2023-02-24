@@ -1,0 +1,31 @@
+h1{
+  font-family: 'Press Start 2P', cursive;
+  font-size: 3rem;
+  margin-left: 33%;
+  color: #FEF2BF;
+}
+body{
+  background-color: #98B4AA;
+}
+
+.container1 {
+  display: block;
+
+  margin: auto;
+
+}
+
+.btn1{
+    background-image: url("/images/backCard.png");
+    width: 120px;
+    height: 130px;
+
+    margin: 10px;
+    display: inline-block;
+
+
+}
+
+.row{
+   margin-left: 2%;
+}

@@ -1,0 +1,38 @@
+<%- include("headerToDo") -%>
+<main>
+
+  <div class="img-section">
+    <img src="/images/list.png" width="270" height="220">
+  </div>
+
+  <div class="box" id="heading">
+    <h1> <%= listTitle %> </h1>
+  </div>
+
+  <div class="box">
+    <% for (let i=0; i<newListItems.length; i++) { %>
+      <div class="item">
+        <input type="checkbox">
+        <p><%=  newListItems[i]  %></p>
+        <form action="/toDolist" method="post">
+          <button class = "minus" type="submit" name="removeMission" value="<%=newListItems[i]%>">-</button>
+        </form>
+      </div>
+      <% } %>
+
+      <form class="item" action="/toDoList" method="post">
+        <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+        <button type="submit" name="list">+</button>
+      </form>
+  </div>
+
+  <div class="for-home">
+    <form class="" action="/pokerListHome" method="post">
+      <button id = "btnbtn" class = "btn btn-secondary" type="submit" name="home">To Home</button>
+    </form>
+  </div>
+
+</main>
+
+
+<%- include("footer") -%>

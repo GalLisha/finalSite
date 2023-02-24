@@ -1,0 +1,42 @@
+
+
+html{
+  text-align: center;
+}
+
+p{
+  font-family: "Arvo", cursive;
+  font-size: 3rem;
+  text-shadow: 1px 0 #DA0463;
+}
+
+#body-id{
+  background-color:  #B9E0FF;
+}
+
+.img-section{
+  text-align: center;
+  margin-top: 5%;
+}
+
+.start{
+  text-align: center;
+}
+
+.new-guess{
+  margin:3%;
+}
+
+.btn{
+  font-size: 30px;
+}
+
+.submit{
+  margin-bottom: 7px;
+}
+
+.history-guess{
+  margin-left: 20%;
+  margin-right: 20%;
+  background-color: #C0EEE4;
+}

@@ -1,0 +1,70 @@
+<%- include("headerTrivia") -%>
+<div class="title-dex">
+  <h1>Who Wants to Be a Millionaire <i class="fa-sharp fa-solid fa-question"></i></h1>
+</div>
+
+<form class="triv" action="/millionaire" method="post">
+  <button class = "btn btn-success" id="startBtn" type="submit" name="start">Start</button>
+  <button class = "btn btn-success" type="submit" name="quitGame">Quit</button>
+</form>
+
+<div class="game-body">
+ <div class="row">
+   <p class="main-question"> <%= newQuestion %> </p>
+ </div>
+
+ <form class="main-ques" action="/millionaire" method="post">
+   <div class="row ">
+     <div class="A col-md-6 d-grid gap-2"">
+        <button class="btn btn-primary" type="submit" name = "option1" value="<%= questionA %>"><%= questionA %></button>
+     </div>
+     <div class="B col-md-6 d-grid gap-2"">
+        <button class="btn btn-primary" type="submit" name = "option2" value="<%= questionB %>"><%= questionB %></button>
+     </div>
+   </div>
+   <div class="row">
+     <div class="C col-md-6 d-grid gap-2">
+       <button class="btn btn-primary" type="submit" name = "option3" value="<%= questionC %>"><%= questionC %></button>
+     </div>
+     <div class="D col-md-6 d-grid gap-2" >
+        <button class="btn btn-primary" type="submit" name = "option4" value="<%= questionD %>"><%= questionD %></button>
+     </div>
+   </div>
+   </form>
+  </div>
+
+
+
+  <div class="help-section">
+
+    <div class="price">
+      <h2 class="result"> <%=win%> </h2>
+      <h2>Question for <%=currentPrice%> </h2>
+      <h2>Quit price: <%=quitprice%> , Safety net: <%=safetyNet%></h2>
+    </div>
+
+      <h2 id="h2-sec">Need Help?</h2>
+      <form class="" action="/millionaireHelp" method="post">
+        <button class="button-test btn btn-warning" id="help-btn" type="submit" name = "callAfriend" value="friend" <%=toDis%> >Call a friend</button>
+        <button class="button-test btn btn-warning" type="submit" name = "fifty" value="fifty" <%=toFifty%> >50/50</button>
+        <button class="button-test btn btn-warning" type="submit" name = "audience" value="audience" <%=toAudience%> >Audience</button>
+      </form>
+      <h2 class="answer-from-help"><%= help %></h2>
+
+      <!-- <div id="safeTimer">
+        <h2>Safe Timer</h2>
+        <p id="safeTimerDisplay"></p>
+      </div> -->
+
+  </div>
+
+  <div class="for-home">
+    <form class="" action="/pokerListHome" method="post">
+      <button id = "btnbtn" class = "btn btn-primary" type="submit" name="home">To Home</button>
+    </form>
+  </div>
+
+
+
+
+<%- include("footerTrivia") -%>
