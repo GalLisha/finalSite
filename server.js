@@ -179,26 +179,62 @@ app.post("/pokerListHome", function(req, res){
   res.redirect("/");
 });
 
+function getNumberOfRebuys(request){
+  let numberOfRebuys;
+  let name;
+  let res = [];
+  if(request.body.addRebuy != null){
+    numberOfRebuys = 1;
+    name = request.body.addRebuy;
+  }
+  else if(request.body.addTwoRebuy != null){
+    numberOfRebuys = 2;
+    name = request.body.addTwoRebuy;
+  }
+  else if(request.body.addThreeRebuy != null){
+    numberOfRebuys = 3;
+    name = request.body.addThreeRebuy;
+  }
+  else if(request.body.addFourRebuy){
+    numberOfRebuys = 4;
+    name = request.body.addFourRebuy;
+  }
+  else if(request.body.addFiveRebuy){
+    numberOfRebuys = 5;
+    name = request.body.addFiveRebuy;
+  }
+  res.push(name);
+  res.push(numberOfRebuys);
+  return res;
+}
+
 app.post("/pokerList", function(req, res){
 
-  const tempRecord = req.body.newPlayer;
-
+  let tempRecord = req.body.newPlayer;
 
   if(tempRecord != null && tempRecord != ""){
+    let numberOfRebuysWhenJoin = 1;
+    if(!isNaN(tempRecord.charAt(tempRecord.length-1))){
+      numberOfRebuysWhenJoin = tempRecord.charAt(tempRecord.length-1);
+      tempRecord = tempRecord.slice(0,-1);
+    }
+    console.log(numberOfRebuysWhenJoin);
     const record = new Record ({
         name: tempRecord,
-        rebuys: 1
+        rebuys: numberOfRebuysWhenJoin
     });
 
     const result = Record.insertMany(record,function(err){
-      err ? "eror in insert" : "insrt success";
+      err ? "eror in insert" : "insert success";
     });
     res.redirect("/pokerList");
   }
-
+  //nameAndRebuys[0] = player name , nameAndRebuys[1] = number Of Rebuys
+  let nameAndRebuys = getNumberOfRebuys(req);
   const addrebuys = req.body.addRebuy;
   const removerebuys = req.body.removeRebuy;
   const refresh = req.body.refresh;
+
   if(refresh != null){
     console.log("refresh clicked" + tempRecord);
     //prompt("Please enter your name", "Harry Potter");
@@ -210,17 +246,18 @@ app.post("/pokerList", function(req, res){
 
     res.redirect("/pokerList");
   }
-  if(addrebuys != null){
 
-    //console.log("+ is clicked");
-    //console.log( addrebuys);
-     Record.findOne({name: addrebuys},function(err,obj){
+  if(nameAndRebuys[0] != null){
+    const playerName = nameAndRebuys[0];
+    const numberOfRebuys = nameAndRebuys[1];
+    //console.log(nameAndRebuys[0]);
+    //console.log(nameAndRebuys[1]);
+     Record.findOne({name: playerName},function(err,obj){
       if(err){
         console.log("cannot find any parson with that name");
       }else{
-        //console.log(obj.rebuys);
         Record.updateOne({name:obj.name},
-                {rebuys:obj.rebuys+1}, function (error, docs) {
+                {rebuys:obj.rebuys+numberOfRebuys}, function (error, docs) {
                 if (error){
                  console.log(err)
                 }

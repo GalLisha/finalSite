@@ -11,7 +11,12 @@
       <p><%=  newListItems[i].rebuys  %></p>
       <p><%=  newListItems[i].rebuys * 20 %></p>
       <form class="rebuys" action="/pokerList" method="post">
-        <button type="submit" name="addRebuy" value="<%=newListItems[i].name%>">+</button>
+        <!--<button type="submit" name="addRebuy" value="<%=newListItems[i].name%>">+</button>-->
+        <button type="submit" name="addRebuy" value="<%=newListItems[i].name%>">1</button>
+        <button type="submit" name="addTwoRebuy" value="<%=newListItems[i].name%>">2</button>
+        <button type="submit" name="addThreeRebuy" value="<%=newListItems[i].name%>">3</button>
+        <button type="submit" name="addFourRebuy" value="<%=newListItems[i].name%>">4</button>
+        <button type="submit" name="addFiveRebuy" value="<%=newListItems[i].name%>">5</button>
         <button class = "minus" type="submit" name="removeRebuy" value="<%=newListItems[i].name%>">-</button>
       </form>
     </div>
